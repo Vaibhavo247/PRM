@@ -1,0 +1,22 @@
+.content{
+    padding-top: 10px;
+    flex: 1 1 ;
+    margin-right: 10px;
+}
+.row{
+    
+    gap: 10px;
+
+    mat-form-field{
+        width: 50%;
+        flex:1 1;
+    }
+}
+.action{
+    padding:5px 25px 20px;
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+    button{
+        margin-right: 10px;
+    }
+}

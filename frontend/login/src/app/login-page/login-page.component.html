@@ -1,0 +1,34 @@
+<div class = "container">
+  <mat-card>
+    <mat-card-title style="color: yellow;">
+      <h1>Login Here</h1>
+    </mat-card-title>
+    <img mat-card-avatar src="../../../assets/manappuram-finance--600.png" alt="Manappuram Finance">
+    <mat-card-content>
+      <form [formGroup]="loginform" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <mat-form-field appearance="outline" required>
+            <mat-label style="color:#ff5400;">username</mat-label>
+            <input matInput formControlName="username" placeholder="Username">
+            <mat-icon matSuffix icon style="color: aqua;">person</mat-icon>
+            <mat-error *ngIf="loginform.get('username')?.errors"> Username is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field appearance="outline" required>
+            <mat-label style="color:#ff5400;">Password</mat-label>
+            <input matInput type="password" formControlName="password" placeholder="Password">
+            <mat-icon matSuffix icon style="color: aqua;">lock</mat-icon>
+            <mat-error *ngIf="loginform.get('password')?.errors"> Password is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" [disabled]='!loginform.valid' (click)="onSubmit()">Login</button>
+      <a routerLink="/forgot" style="padding-left: 27px; width: 115.567px;margin-left: 0px;left: 21px;bottom: 5px;right: -1px;margin-right: 0px; --clr:#1e9bff"><span>Forgot password</span><i></i></a>
+    </mat-card-actions>
+  </mat-card>
+</div>

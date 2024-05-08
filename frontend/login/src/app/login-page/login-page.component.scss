@@ -1,0 +1,139 @@
+
+.mat-mdc-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    background: rgba(0,0,0,0.2);
+    border:2px;
+    border-radius: 20px;
+    border-color:black;
+    
+    
+  }
+  
+  .mat-mdc-card-avatar{
+    width: 100px;
+    height: 100px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 80px;
+  }
+  
+  .mat-mdc-card-title{
+  justify-content: center;
+  text-align: center;
+  text-decoration: solidS;    
+  
+  }
+  .container:after {  /* Target outer container element for background */
+    content: "";
+    background-image: url("../../assets/cover3.jpg");  background-attachment: scroll;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;  /* Place behind content */
+
+  }
+  .mat-mdc-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    background: rgba(0, 0, 0, 0.2);
+    border: 2px solid black;
+    border-radius: 20px;
+  }
+  
+  .mat-mdc-card-avatar {
+    width: 100px;
+    height: 100px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 80px;
+  }
+  
+  .mat-mdc-card-title {
+    justify-content: center;
+    text-align: center;
+    text-decoration: solidS; /* Assuming you meant 'none' for no underline */
+  }
+  /* New style for the anchor tag */
+  .forgot-password {
+    color: #ff5400; /* Orange color for the text */
+    text-decoration: none; /* Remove underline */
+    margin-left: auto; /* Align to the right side */
+    padding-right: 10px; /* Optional padding for better spacing */
+  
+    /* Add hover effect (optional) */
+    &:hover {
+      color: #ff9933; /* Change color on hover (lighter orange) */
+    }
+  }
+  
+  a{
+    position: relative;
+    background: #fff;
+    color:#fff;
+    text-decoration: none;
+    font-size: 1em;
+    letter-spacing: 0.1em;
+    padding: 10px 30px;
+    transition: 0.5s all ease;
+  }
+
+  a:hover{
+    background:var(--clr);
+    color:var(--clr) ;
+    letter-spacing: 0.25em;
+    box-shadow: 0 0 30px var(--clr);
+  }
+  a::before{
+    content: '';
+    position: absolute;
+    inset: 1px;
+     background: #27282c;
+  }
+  a span{
+    position: relative;
+    z-index: 1;
+  }
+  a i{
+    position: absolute;
+    inset:0;
+    display: block;
+  }
+  a i::before{
+    content: '';
+    position: absolute;
+    top:0;
+    left: 80%;
+    width: 15px;
+    height:5px;
+    background:#27282c ;
+    transform: translateX(-50%) skew(325deg);
+  }
+  a:hover i::before {
+    width: 20px;
+    left: 20px;
+  }
+  a i::after{
+    content: '';
+    position: absolute;
+    bottom:0;
+    left: 20%;
+    width: 15px;
+    height:5px;
+    background:#27282c ;
+    transform: translateX(-50%) skew(325deg);
+  }
+  a:hover i::after {
+    width: 20px;
+    left: 80%;
+  }

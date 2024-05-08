@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+  <title>Transparent Navbar</title>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-md navbar-dark bg-transparent">
+    <div class="container">
+      <a class="navbar-brand" href="#"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-1g-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+        <button class="btn btn-outline-success" (click)="openEditForm()">Add Details</button>
+        </div>
+      </div>
+  </nav>
+  <!-- <div class="table-container">
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+    </mat-form-field>
+  </div>
+  <div class="table-card">
+    <table mat-table [dataSource]="datasource" matSort *ngIf="datasource.data?.length" #meetingTable> -->
+      <!-- ID Column -->
+      <!-- <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+      </ng-container>
+        <ng-container matColumnDef="Name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>NAME</th>
+        <td mat-cell *matCellDef="let row">{{row.Name}}</td> </ng-container>
+      <ng-container matColumnDef="emp_code">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Emp_Code</th>
+        <td mat-cell *matCellDef="let row">{{row.emp_code}}</td> </ng-container>
+      <ng-container matColumnDef="designation">
+        <th mat-header-cell *matHeaderCellDef>Designation</th>
+        <td mat-cell *matCellDef="let row">{{row.designation}}</td> </ng-container>
+      <ng-container matColumnDef="state">
+        <th mat-header-cell *matHeaderCellDef>State</th>
+        <td mat-cell *matCellDef="let row">{{row.state}}</td> </ng-container>
+      <ng-container matColumnDef="day">
+        <th mat-header-cell *matHeaderCellDef>Date</th>
+        <td mat-header-cell *matCellDef="let row">{{row.day}}</td> </ng-container>
+        <ng-container matColumnDef="Attendees">
+            <th mat-header-cell *matHeaderCellDef>Count Of Attendees</th>
+            <td mat-cell *matCellDef="let row">{{row.Attendees}}</td>
+          </ng-container>
+          <ng-container matColumnDef="performerName">
+            <th mat-header-cell *matHeaderCellDef>Top perfomer employee name</th>
+            <td mat-cell *matCellDef="let row">{{row.performerName}}</td>
+          </ng-container>
+          <ng-container matColumnDef="TeamSize">
+            <th mat-header-cell *matHeaderCellDef>Actual Team Size</th>
+            <td mat-cell *matCellDef="let row">{{row.TeamSize}}</td>
+          </ng-container>
+          <ng-container matColumnDef="department">
+            <th mat-header-cell *matHeaderCellDef>Department</th>
+            <td mat-cell *matCellDef="let row">{{row.department}}</td>
+          </ng-container>
+          <ng-container matColumnDef="Product_Name">
+            <th mat-header-cell *matHeaderCellDef>Product</th>
+            <td mat-cell *matCellDef="let row">{{row.Product_Name}}</td>
+          </ng-container>
+          <ng-container matColumnDef="meetingsubject">
+            <th mat-header-cell *matHeaderCellDef>Discussion Topic</th>
+            <td mat-cell *matCellDef="let row">{{row.meetingsubject}}</td>
+          </ng-container>
+          <ng-container matColumnDef="Status">
+            <th mat-header-cell *matHeaderCellDef>Meeting Conducted status</th>
+            <td mat-cell *matCellDef="let row">{{row.Status}}</td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+          
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+          </tr>
+          </table>
+          
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+          </div> -->
+          <!-- <table mat-table [dataSource]="datasource" matSort *ngIf="datasource.data?.length">
+            <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+          
+            <tr mat-row *matRowDef="let row; columns: displayColumns;">
+              <td mat-cell *matCellDef="let col"> {{ row.Name}} </td>
+        <td mat-cell *matCellDef="let col"> {{ row.emp_code }} </td>
+        <td mat-cell *matCellDef="let col"> {{ row.designation }} </td>
+        <td mat-cell *matCellDef="let col"> {{ row.day }} </td>
+        <td mat-cell *matCellDef="let col"> {{ row.Attendees }} </td>
+        <td mat-cell *matCellDef="let col"> {{ row.performerName }} </td>
+        <td mat-cell *matCellDef="let col"> {{ row.TeamSize }} </td>
+        <td mat-cell *matCellDef="let col"> {{ row.department }} </td>
+        <td mat-cell *matCellDef="let col"> {{ row.Product_Name }} </td>
+        <td mat-cell *matCellDef="let col"> {{ row.meetingsubject }} </td>
+        <td mat-cell *matCellDef="let col"> {{ row.Status }} </td>
+            </tr>
+          
+            <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+            </tr>
+          </table>
+          
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+</div>           -->
+<div class="table-container">
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input
+      matInput
+      (keyup)="applyFilter(filterFormControl.value)"
+      [formControl]="filterFormControl"
+      placeholder="Ex. Mia"
+    />
+  </mat-form-field>
+</div>
+<mat-card>
+  <mat-card-content>
+    <table class="table table-striped" border="1"
+      mat-table
+      [dataSource]="datasource"
+      matSort
+      class="full-width-table"
+      style="width: auto"
+      *ngIf="datasource.data?.length"
+    >
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.id }}
+        </td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="Name">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef>NAME</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.Name }}
+        </td>
+      </ng-container>
+  
+      <!-- emp_code Column -->
+      <ng-container matColumnDef="day">
+        <th mat-header-cell *matHeaderCellDef>Date</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.day|date:'dd/MM/yyyy'}}
+        </td>
+      </ng-container>
+      <!-- Designation Column -->
+
+<ng-container matColumnDef="Attendees">
+
+    <th mat-header-cell *matHeaderCellDef>Meeting Attendies</th>
+  
+    <td mat-cell *matCellDef="let element">
+  
+      {{ element.Attendees }}
+  
+    </td>
+  
+  </ng-container>
+
+  
+  <!-- state Column -->
+  
+  <ng-container matColumnDef="performerName">
+  
+    <th mat-header-cell *matHeaderCellDef>Top Performer Name</th>
+  
+    <td mat-cell *matCellDef="let element">
+  
+      {{ element.performerName }}
+  
+    </td>
+  
+  </ng-container>
+  
+  
+  <!-- Day Column -->
+  
+  <ng-container matColumnDef="Status">
+  
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Meeting conducted status</th>
+  
+    <td mat-cell *matCellDef="let element">
+  
+      {{ element.Status }}
+  
+    </td> 
+</ng-container> 
+  <!-- Count of Attendees Column -->
+
+  <!-- <ng-container matColumnDef="Attendees">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Count of Attendies</th>
+   <td mat-cell *matCellDef="let element">
+     {{ element.Attendees }} 
+   </td>
+ </ng-container>
+   -->
+  <ng-container matColumnDef="department">
+     <th mat-header-cell *matHeaderCellDef mat-sort-header>Department</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.department }} 
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Product_Name">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Product</th>
+   <td mat-cell *matCellDef="let element">
+     {{ element.Product_Name }} 
+   </td>
+ </ng-container>
+
+ <ng-container matColumnDef="state">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>State</th>
+   <td mat-cell *matCellDef="let element">
+     {{ element.state }} 
+   </td>
+ </ng-container>
+ 
+ <ng-container matColumnDef="TeamSize">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Actual Team Size</th>
+   <td mat-cell *matCellDef="let element">
+     {{ element.TeamSize }} 
+   </td>
+ </ng-container>
+ 
+ <ng-container matColumnDef="meetingsubject">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Meeting Topic</th>
+   <td mat-cell *matCellDef="let element">
+     {{ element.meetingsubject }} 
+   </td>
+ </ng-container>
+ 
+ <ng-container matColumnDef="emp_code">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Emp code</th>
+   <td mat-cell *matCellDef="let element">
+     {{ element.emp_code }} 
+   </td>
+ </ng-container>
+
+ 
+ <ng-container matColumnDef="designation">
+  <th mat-header-cell *matHeaderCellDef mat-sort-header>Designation</th>
+ <td mat-cell *matCellDef="let element">
+   {{ element.designation }} 
+ </td>
+</ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+    </table>
+
+  </mat-card-content>
+</mat-card>
+ 
+  <div class="table-card mat-elevation-z8" style="overflow: auto">
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
+<div class="export-button-container">
+  <button class="btn btn-outline-warning" (click)="exportToExcel()">Export to Excel</button>
+</div>
+
