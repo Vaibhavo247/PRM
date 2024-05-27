@@ -31,6 +31,7 @@ OracleDB.createPool(dbConfig, (err, pool) => {
   console.log('Connected to Oracle database');
 
   app.use(bodyParser.json());
+  app.use(cors({ origin: '*' }));
   
 
   // CORS configuration (replace with your allowed origin)
@@ -539,6 +540,55 @@ async function updateUserPassword(userId, hashedPassword, connection) {
           console.log("\nThe connection has been closed.");
         } catch (err) {
           console.error(err);
+        }
+      }
+    }
+  });
+
+  
+  // API endpoint to get meeting details by ID
+  app.get('/api/get-meeting-by-id/:meetingId', async (req, res) => {
+    const meetingId = req.params.meetingId;
+    const decodedToken = jwt.verify(req.headers.authorization.split(' ')[1], jwtSecret);
+    let connection;
+
+    try {
+      connection = await pool.getConnection();
+
+      if (!connection) {
+        throw new Error('Failed to acquire connection from pool');
+      }
+
+      const sql = `
+        SELECT * FROM PRM_MEETING WHERE  = PrmId:PrmId
+      `;
+
+      const binds = {
+        PrmId : PrmId
+      };
+
+      const result = await connection.execute(sql, binds);
+
+      if (result.rows.length > 0) {
+        const meeting = result.rows[0];
+
+        if (decodedToken.role === 'maker' || meeting.meeting_status === 'submitted') {
+          res.status(200).json(meeting); // Allow maker to view all meetings, checker to view submitted ones
+        } else {
+          res.status(401).json({ message: 'Unauthorized access' });
+        }
+      } else {
+        res.status(404).json({ message: 'Meeting not found' });
+      }
+    } catch (error) {
+      console.error('Error fetching meeting data:', error);
+      res.status(500).json({ message: 'Error fetching meeting data' });
+    } finally {
+      if (connection) {
+        try {
+          await connection.close();
+        } catch (error) {
+          console.error("Error closing connection", error);
         }
       }
     }

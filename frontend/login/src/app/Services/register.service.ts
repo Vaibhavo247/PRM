@@ -82,6 +82,14 @@ validateToken(token: string, email: string): Observable<any> {
     );
 }
   
+getMeetingDetailsById(meetingId: string): Observable<any> {
+  const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('authToken')}`); // Include JWT token
+
+  return this.http.get<any>(`http://localhost:3000/api/get-meeting-by-id/${meetingId}`, { headers })
+    .pipe(
+      catchError(this.handleError)
+    );
+}
 private handleError(error: HttpErrorResponse) {
   console.error(
     `Backend returned code ${error.status}, body was: ${error.error}`);

@@ -7,6 +7,7 @@ import { RegisterService } from '../Services/register.service';
 import { FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { MeetingFormComponent } from '../meeting-form/meeting-form.component';
+import * as XLSX from 'xlsx';
 
 interface MeetingData {
   id: number;
@@ -97,6 +98,10 @@ export class HomeComponent implements OnInit {
   }
 
   exportToExcel() {
+    const worksheet = XLSX.utils.json_to_sheet(this.datasource.data);
+  const workbook = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(workbook, worksheet, 'Meeting Data');
+  XLSX.writeFile(workbook, 'meeting_data.xlsx');
     this.http.get(this.apiUrl, { responseType: 'blob' })
       .subscribe(blob => {
         const url = window.URL.createObjectURL(blob);

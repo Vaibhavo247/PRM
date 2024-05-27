@@ -25,5 +25,6 @@
         "titleBar.border": "#f9e64f",
         "tab.activeBorder": "#fbed80"
     },
-    "peacock.color": "#f9e64f"
+    "peacock.color": "#f9e64f",
+    "CodeGPT.apiKey": "CodeGPT Plus Beta"
 }
